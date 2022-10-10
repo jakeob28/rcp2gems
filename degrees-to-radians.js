@@ -34,12 +34,12 @@ class DegreesToRadians extends stream.Transform {
     return _.map(columnNames, (column, index) => {
       if (column.startsWith('Latitude')) {
         this.latIndex = index;
-        return 'Latitude';
+        return 'Latitude [rad]';
       }
 
       if (column.startsWith('Longitude')) {
         this.lonIndex = index;
-        return 'Longitude';
+        return 'Longitude [rad]';
       }
 
       return column;
