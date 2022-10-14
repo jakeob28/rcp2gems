@@ -6,6 +6,7 @@ const fillRows = require('./fill-rows');
 const writeLog = require('./write-itlog');
 const degreesToRadians = require('./degrees-to-radians');
 const fixBadCurrents = require('./fix-bad-currents');
+const fixTempUnits = require('./fix-temp-units')
 
 function convert(filename, output) {
     return new Promise((resolve, reject) => {
@@ -15,6 +16,7 @@ function convert(filename, output) {
             .pipe(fillRows())
             .pipe(degreesToRadians())
             .pipe(fixBadCurrents())
+            .pipe(fixTempUnits())
             .pipe(writeLog())
             .pipe(fs.createWriteStream(output))
 
