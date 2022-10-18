@@ -7,6 +7,7 @@ const writeLog = require('./write-itlog');
 const degreesToRadians = require('./degrees-to-radians');
 const fixBadCurrents = require('./fix-bad-currents');
 const fixTempUnits = require('./fix-temp-units')
+const addPowerColumn = require('./add-power-column');
 
 function convert(filename, output) {
     return new Promise((resolve, reject) => {
@@ -17,6 +18,7 @@ function convert(filename, output) {
             .pipe(degreesToRadians())
             .pipe(fixBadCurrents())
             .pipe(fixTempUnits())
+            .pipe(addPowerColumn())
             .pipe(writeLog())
             .pipe(fs.createWriteStream(output))
 
