@@ -29,7 +29,6 @@ class FixTempUnits extends stream.Transform {
     writeHeader(columnNames) {
         return _.map(columnNames, (column) => {
             if (column.startsWith("MotorTemp") || column.startsWith("InvTemp")) {
-                console.log(column.replace("\[F\]", "[C]"))
                 return column.replace("\[F\]", "[C]");
             }
             return column;
