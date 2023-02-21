@@ -9,6 +9,8 @@ const fixBadCurrents = require('./fix-bad-currents');
 const fixBadRPMs = require('./fix-bad-rpms');
 const fixTempUnits = require('./fix-temp-units')
 const addPowerColumn = require('./add-power-column');
+const addEnergyColumn = require('./add-energy-column');
+
 
 function convert(filename, output) {
     return new Promise((resolve, reject) => {
@@ -21,6 +23,7 @@ function convert(filename, output) {
             .pipe(fixBadRPMs())
             .pipe(fixTempUnits())
             .pipe(addPowerColumn())
+            .pipe(addEnergyColumn())
             .pipe(writeLog())
             .pipe(fs.createWriteStream(output))
 
