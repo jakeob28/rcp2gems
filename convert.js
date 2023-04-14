@@ -10,6 +10,8 @@ const fixBadRPMs = require('./fix-bad-rpms');
 const fixTempUnits = require('./fix-temp-units')
 const addPowerColumn = require('./add-power-column');
 const addEnergyColumn = require('./add-energy-column');
+const addBrakeForceColumn = require('./add-brake-force-column');
+const addBrakeBiasColumn = require('./add-brake-bias-column');
 
 
 function convert(filename, output) {
@@ -24,6 +26,8 @@ function convert(filename, output) {
             .pipe(fixTempUnits())
             .pipe(addPowerColumn())
             .pipe(addEnergyColumn())
+            .pipe(addBrakeForceColumn())
+            .pipe(addBrakeBiasColumn())
             .pipe(writeLog())
             .pipe(fs.createWriteStream(output))
 
