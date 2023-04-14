@@ -32,7 +32,7 @@ class AddPowerColumn extends stream.Transform {
     writeHeader(columnNames) {
         columnNames.push("Power [W]");
         this.powerCol = columnNames.length - 1;
-        this.voltageCol = columnNames.findIndex(c => c.startsWith("PackInstV"));
+        this.voltageCol = columnNames.findIndex(c => c.startsWith("Pack_Inst_V"));
         this.currentCol = columnNames.findIndex(c => c.startsWith("PackCurrent"));
 
         return columnNames
